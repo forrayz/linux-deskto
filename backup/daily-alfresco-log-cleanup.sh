@@ -22,22 +22,26 @@ ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-data)
 
 for ii in ${ALFRESCO_FOLDERS}
 do
+        
+        if [ -d "$ii/tomcat/logs" ]; then
+    
         find  $ii/tomcat/logs/ -name $FILE_PATTERN1 -type f -mtime +99 -exec rm -f {} \;
         find  $ii/tomcat/logs/ -name $FILE_PATTERN2 -type f -mtime +99 -exec rm -f {} \;
         find  $ii/tomcat/logs/ -name $FILE_PATTERN3 -type f -mtime +99 -exec rm -f {} \;
         echo "possible logfolder alfresco-data for pattern $FILE_PATTERN1,  $FILE_PATTERN2,  $FILE_PATTERN3 ---------------> $ $ii/tomcat/logs/"
-    
+        fi
 done
 
 ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-community)
 
 for ii in ${ALFRESCO_FOLDERS}
 do
+         if [ -d "$ii/tomcat/logs" ]; then
         find  $ii/tomcat/logs/ -name $FILE_PATTERN1 -type f -mtime +99 -exec rm -f {} \;
         find  $ii/tomcat/logs/ -name $FILE_PATTERN2 -type f -mtime +99 -exec rm -f {} \;
         find  $ii/tomcat/logs/ -name $FILE_PATTERN3 -type f -mtime +99 -exec rm -f {} \;
         echo "possible logfolder alfresco-community for pattern $FILE_PATTERN1,  $FILE_PATTERN2,  $FILE_PATTERN3 ---------------> $ $ii/tomcat/logs/"
-    
+        fi
 done
 
 
