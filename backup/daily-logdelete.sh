@@ -50,6 +50,9 @@ do
 done
 
 
+LOGTIME=$(date)
+echo "daily-logdelete has been run at ----> $LOGTIME"
+
 
 
 
