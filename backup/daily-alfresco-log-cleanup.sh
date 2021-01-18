@@ -24,7 +24,7 @@ do
 
   if ls $ii/tomcat/logs/$FILE_PATTERN &>/dev/null 
      then
-        echo "Logfiles Found."
+        echo "$FILE_PATTERN  files found"
         find  $ii/tomcat/logs/ -name $FILE_PATTERN -type f -mtime +2 -exec rm -f {} \;
         echo "$FILE_PATTERN found in alfresco-data---------------> $ $ii/tomcat/logs/"
      else
@@ -33,60 +33,6 @@ do
     
 done
 
-
-
-ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-community)
-FILE_PATTERN="*.log"
-
-for ii in ${ALFRESCO_FOLDERS}
-do
-
-  if ls $ii/tomcat/logs/$FILE_PATTERN &>/dev/null 
-     then
-        echo "Logfiles Found."
-        find  $ii/tomcat/logs/ -name $FILE_PATTERN -type f -mtime +2 -exec rm -f {} \;
-        echo "$FILE_PATTERN found in alfresco-community---------------> $ $ii/tomcat/logs/"
-     else
-        echo "Not found."
-  fi
-    
-done
-
-
-ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-data)
-FILE_PATTERN="*.gz"
-
-for ii in ${ALFRESCO_FOLDERS}
-do
-
-  if ls $ii/tomcat/logs/$FILE_PATTERN &>/dev/null 
-     then
-        echo "Logfiles Found."
-        find  $ii/tomcat/logs/ -name $FILE_PATTERN -type f -mtime +2 -exec rm -f {} \;
-        echo "$FILE_PATTERN found in alfresco-data---------------> $ $ii/tomcat/logs/"
-     else
-        echo "Not found."
-  fi
-    
-done
-
-
-ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-community)
-FILE_PATTERN="*.gz"
-
-for ii in ${ALFRESCO_FOLDERS}
-do
-
-  if ls $ii/tomcat/logs/$FILE_PATTERN &>/dev/null 
-     then
-        echo "Logfiles Found."
-        find  $ii/tomcat/logs/ -name $FILE_PATTERN -type f -mtime +2 -exec rm -f {} \;
-        echo "$FILE_PATTERN found in alfresco-community---------------> $ $ii/tomcat/logs/"
-     else
-        echo "Not found."
-  fi
-    
-done
 
 echo "daily-logdelete.sh has been run against $BASEDIR at ----> $LOGTIME" >> /var/log/daily-logdelete.sh.log
 
