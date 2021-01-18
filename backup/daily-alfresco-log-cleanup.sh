@@ -10,11 +10,12 @@ echo "############################################################"
 #trap "set +x; sleep 1; set -x" DEBUG
 
 # BASEDIR=/data/docker-data/volumes/
-# echo "daily-alfresco-log-cleanup.sh has been started against $BASEDIR at ----> $LOGTIME" >> /var/log/daily-alfresco-log-cleanup.sh.log
-
-#BASEDIR=/data/docker-data/volumes/
-BASEDIR=/home/forrayz/development/public/linux-desktop/backup
 LOGTIME=$(date)
+echo "daily-alfresco-log-cleanup.sh has been started against $BASEDIR at ----> $LOGTIME" >> /var/log/daily-alfresco-log-cleanup.sh.log
+
+BASEDIR=/data/docker-data/volumes/
+# BASEDIR=/home/forrayz/development/public/linux-desktop/backup
+
 
 ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-data)
 FILE_PATTERN="*.log"
