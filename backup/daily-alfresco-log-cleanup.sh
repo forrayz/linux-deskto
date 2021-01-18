@@ -9,11 +9,12 @@ echo "#     contributor:      Z                                  #"
 echo "############################################################"
 #trap "set +x; sleep 1; set -x" DEBUG
 BASEDIR=/data/docker-data/volumes/
+# BASEDIR=/home/forrayz/development/public/linux-desktop/backup
 
 LOGTIME=$(date)
 echo "daily-alfresco-log-cleanup.sh has been started against $BASEDIR at ----> $LOGTIME" >> /var/log/daily-alfresco-log-cleanup.sh.log
 
-# BASEDIR=/home/forrayz/development/public/linux-desktop/backup
+
 FILE_PATTERN1="*.log"
 FILE_PATTERN2="*.gz"
 FILE_PATTERN3="*.txt"
