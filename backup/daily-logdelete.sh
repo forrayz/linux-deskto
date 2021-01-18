@@ -51,7 +51,7 @@ done
 
 
 LOGTIME=$(date)
-echo "daily-logdelete has been run at ----> $LOGTIME"
+echo "daily-logdelete.sh has been run at ----> $LOGTIME" >> /var/log/daily-logdelete.sh.log
 
 
 
