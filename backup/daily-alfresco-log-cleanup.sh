@@ -10,31 +10,72 @@ echo "############################################################"
 #trap "set +x; sleep 1; set -x" DEBUG
 
 # BASEDIR=/data/docker-data/volumes/
-BASEDIR=/home/forrayz/development/public/linux-desktop/backup
-LOGTIME=$(date)
 # echo "daily-alfresco-log-cleanup.sh has been started against $BASEDIR at ----> $LOGTIME" >> /var/log/daily-alfresco-log-cleanup.sh.log
 
+#BASEDIR=/data/docker-data/volumes/
+BASEDIR=/home/forrayz/development/public/linux-desktop/backup
+LOGTIME=$(date)
 ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-data)
 FILE_PATTERN="*.log"
-# SUBFOLDERS=$(find ${BASEDIR} -name $FILE_PATTERN -not -path "*/commitlog/*" -not -path "*/journal/*" -printf "%h\n" | sort -u)
+
 for ii in ${ALFRESCO_FOLDERS}
 do
-                
-    find  $ALFRESCO_FOLDERS/tomcat/logs/ -name $FILE_PATTERN -type f -mtime +2 -exec rm -f {} \;
-    echo "$FILE_PATTERN found in alfresco-data---------------> $ $ii/tomcat/logs/"  
+
+  if ls $ii/tomcat/logs/*.log &>/dev/null 
+     then
+        echo "Logfiles Found."
+        find  $ii/tomcat/logs/ -name $FILE_PATTERN -type f -mtime +2 -exec rm -f {} \;
+        echo "$FILE_PATTERN found in alfresco-data---------------> $ $ii/tomcat/logs/"
+     else
+        echo "Not found."
+  fi
     
 done
 
-ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-community)
 
-FILE_PATTERN="*.log"
-# # SUBFOLDERS=$(find ${BASEDIR} -name $FILE_PATTERN -not -path "*/commitlog/*" -not -path "*/journal/*" -printf "%h\n" | sort -u)
+LOGTIME=$(date)
+ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-data)
+FILE_PATTERN="*.gz"
+
 for ii in ${ALFRESCO_FOLDERS}
 do
-                
-    find  $ALFRESCO_FOLDERS/tomcat/logs/ -name $FILE_PATTERN -type f -mtime +2 -exec rm -f {} \;
-    echo "$FILE_PATTERN found in  alfresco-data---------------> $ii/tomcat/logs/"  
+
+  if ls $ii/tomcat/logs/*.log &>/dev/null 
+     then
+        echo "Logfiles Found."
+        find  $ii/tomcat/logs/ -name $FILE_PATTERN -type f -mtime +2 -exec rm -f {} \;
+        echo "$FILE_PATTERN found in alfresco-data---------------> $ $ii/tomcat/logs/"
+     else
+        echo "Not found."
+  fi
     
 done
+
+
+LOGTIME=$(date)
+ALFRESCO_FOLDERS=$(find $BASEDIR -type d -name alfresco-data)
+FILE_PATTERN="*.gz"
+
+for ii in ${ALFRESCO_FOLDERS}
+do
+
+  if ls $ii/tomcat/logs/*.log &>/dev/null 
+     then
+        echo "Logfiles Found."
+        find  $ii/tomcat/logs/ -name $FILE_PATTERN -type f -mtime +2 -exec rm -f {} \;
+        echo "$FILE_PATTERN found in alfresco-data---------------> $ $ii/tomcat/logs/"
+     else
+        echo "Not found."
+  fi
+    
+done
+
+
+
+
+
+
+
+
 
 echo "daily-logdelete.sh has been run against $BASEDIR at ----> $LOGTIME" >> /var/log/daily-logdelete.sh.log
