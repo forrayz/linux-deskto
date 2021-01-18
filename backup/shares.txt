@@ -1,0 +1,13 @@
+Állapot      Helyi     Távoli                    Hálózat
+
+-------------------------------------------------------------------------------
+OK           H:        \\sys-fs01.si.net\home$\forrayz
+                                                Microsoft Windows Network
+OK           K:        \\sys-fs01.si.net\dosapp  Microsoft Windows Network
+OK           L:        \\sys-fs01.si.net\szirfejl
+                                                Microsoft Windows Network
+OK           M:        \\sys-fs01.si.net\munka   Microsoft Windows Network
+             P:        \\si.net\share            Microsoft Windows Network
+OK           S:        \\sys-fs01.si.net\setup   Microsoft Windows Network
+OK           T:        \\sys-fs01.si.net\runtime Microsoft Windows Network
+OK           U:        \\sys-fs01.si.net\users   Microsoft Windows Network
