@@ -11,23 +11,20 @@ echo  "##################################################################"
 THRESHOLD=$1
 
 
+CURRENT=$(df /data | grep / | awk '{ print $5}' | sed 's/%//g')
+
+
+if [ "$CURRENT" -gt "$THRESHOLD" ] ; then
+
+echo "The following partition belongs to /data has reached $CURRENT % alert has been triggerd due to the treshold : $THRESHOLD has been reached " | mail -s "Free space Alert from fikszalt.alig.hu" forray.zoltan@ulyssys.hu
+
+fi
+
 CURRENT=$(df / | grep / | awk '{ print $5}' | sed 's/%//g')
 
 
 if [ "$CURRENT" -gt "$THRESHOLD" ] ; then
-    mail -s 'Disk Space Alert' forray.zoltan@ulyssys.hu<< EOF
-Your root partition remaining free space is critically low. Used: $CURRENT%
-EOF
-echo "we have $CURRENT space used  on root filesystem this is less than than $THRESHOLD "
 
-fi
+echo "The following partition belongs to / (root) has reached $CURRENT % alert has been triggerd due to the treshold : $THRESHOLD has been reached " | mail -s "Free space Alert from fikszalt.alig.hu" forray.zoltan@ulyssys.hu
 
-CURRENT=$(df / | grep /data | awk '{ print $5}' | sed 's/%//g')
-
-
-if [ "$CURRENT" -gt "$THRESHOLD" ] ; then
-     mail -s 'Disk Space Alert' forray.zoltan@ulyssys.hu << EOF
- Your root partition remaining free space is critically low. Used: $CURRENT%
-EOF
-echo "we have $CURRENT space used  on root filesystem this is less than than $THRESHOLD "
 fi
